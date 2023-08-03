@@ -50,6 +50,7 @@ app.use(session({
     }),
 }))
 
+// initializing session and passport
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);

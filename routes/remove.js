@@ -5,8 +5,9 @@ const router = express.Router();
 const removeController = require('../controller/removeController');
 
 // for user request
-
+// to remove bug
 router.get('/removebug/:id',removeController.removeBug);
+// to delete project
 router.delete('/removeproject/:id',removeController.removeProject);
 
 

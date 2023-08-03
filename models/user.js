@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
             required : true,
     },
     projects:[{
+        // array of all the project created by the user
         type:mongoose.Schema.Types.ObjectId,
         ref:'Project'
     }]

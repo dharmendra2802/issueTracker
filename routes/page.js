@@ -6,6 +6,7 @@ const pageController = require('../controller/pageController');
 
 // for signup/related
 router.get('/mainPage',passport.checkAuthentication,pageController.main);
+// for project page
 router.get('/projectPage',pageController.project);
 // router.get('/projectPage/searchby/',pageController.searchBy);
 

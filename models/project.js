@@ -6,6 +6,7 @@ const projectSchema = new mongoose.Schema({
             required : true,
     },
     authorId:{
+        // ref to user
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
@@ -14,9 +15,11 @@ const projectSchema = new mongoose.Schema({
             required : true,
     },
     labels : [{
+        // array labels ass. with the project
         type:String
     }],
     bugs:[{
+        //  ref to all the bug ass. wiht the project
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Bug'
     }],
