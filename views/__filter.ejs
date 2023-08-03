@@ -1,0 +1,93 @@
+
+<div class="col d-flex justify-content-between align-items-center px-2">    
+    <div>
+        <p class="fs-2 fw-semibold d-inline me-4 "><%= project.name %></p>
+        <a href class="text-decoration-underline text-danger  text-uppercase  fw-bold fs-6 me-2"
+        data-bs-toggle="modal" data-bs-target="#addBug">
+        Add a Bug</a>
+        <a href="/user/page/mainpage"><img src="/imgs/return.png" class="icons" alt=""></a>
+    </div>
+    <div class="d-flex ">
+        <!-- search by -->
+        <a href="/user/page/projectPage/?id=<%= project.id %>" class="text-danger  fs-5">Clear Filters</a>
+
+        <form class="d-flex ms-3" role="search" action="/user/page/projectPage/?"  id="searchBY" >
+            <input type="hidden" name="id" value="<%= project.id %>">
+            <input class="form-control me-2" type="search" placeholder="Search by title ......" name="searchBy" aria-label="Search" >
+        </form>   
+        <!-- sort by -->
+        <div class="d-flex justify-content-center align-items-center ms-2">
+            <div>
+                <img src="/imgs/sort.png" alt="" style="width: 15px; height: auto;">
+                Sort by 
+            </div>
+            <div class="dropdown ms-2">
+                <a  class="btn btn-secondary dropdown-toggle sortByVisible" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-value="sortByNewest">
+                    <%=  %>
+                </a>                
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item sortBy" href="/user/page/projectPage/?id=<%=project.id%>&sortby=name" data-sortByValue="name">Title</a></li>
+                    <li><a class="dropdown-item sortBy" href="/user/page/projectPage/?id=<%=project.id%>&sortby=sortByOldest" data-sortByValue="sortByOldest">Oldest First</a></li>
+                    <li><a class="dropdown-item sortBy" href="/user/page/projectPage/?id=<%=project.id%>&sortby=sortByNewest" data-sortByValue="sortByNewest">Newst First</a></li>
+                    <li><a class="dropdown-item sortBy" href="/user/page/projectPage/?id=<%=project.id%>&sortby=authorId" data-sortByValue="authorId">Author</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- add a bug modal -->
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="addBug" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-3 fw-semibold text-danger  " id="staticBackdropLabel">Add Bug</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <!-- to add the task -->
+            <form action="/user/add/addBug" id="addProjectForm" method="post">
+                <!-- sedning id -->
+                <input type="hidden" name="authorId" value="<%= locals.user.id%>">
+                <input type="hidden" name="projectId" value="<%= project.id%>">
+
+                <div class="mb-3">
+                    <label for="name" class="form-label fw-semibold fs-4 ">Name of the Bug</label>
+                    <input type="text" class="form-control" id="name" placeholder="give a name" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="author" class="form-label fw-semibold fs-4 ">Author Name</label>
+                    <input type="text" class="form-control" id="author" placeholder="name of the author" name="author" required value="<%= user.name%>">
+                </div>
+                <div class="mb-3">
+                    <label for="Description" class="form-label  fw-semibold fs-4 ">Description</label>
+                    <textarea class="form-control" id="Description" rows="3" name="description" placeholder="Add a description of the Bug" required></textarea>
+                </div>
+                <div class="row ">
+                    <select class="col-6 form-select-sm  mb-2"  name="label" required>
+                        <option selected disabled>Add label to the bug</option>
+                        <% for(label of project.labels) { %>
+                            <option value=<%= label %>> <%= label %></option>
+                        <% } %>
+                    </select>
+                      
+                    <div class="mb-3 col-6">
+                        <input type="text" class="form-control" name="label" placeholder="add a custom label">
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center ">
+                    <button type="submit" class="col-6 btn btn-outline-success ">Add</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/submit.js"></script>

@@ -1,0 +1,52 @@
+<%- include('__navbar.ejs') %>
+
+<div class="container-fluid">
+
+  <div class="row "> <!-- Add a row container here -->
+
+    <!-- right side -->
+    <div class="col-3 p-2 border-2 border-end">
+      <%- include('__rightCol.ejs') %>
+    </div>
+
+    <div class="col-9">
+
+        <p class="display-2 fs-2 fw-medium ">Projects</p>
+    
+        
+        <ol class="list-group-flush  list-group-numbered pe-2 style-4" style="overflow-y: auto; height:400px">
+          <% for (project of projects) { %>  
+          <li class="list-group-item d-flex justify-content-between align-items-start pb-1 ps-2 mb-2 border-1 border-bottom ">
+                <div class="ms-2 me-auto">
+                    <!-- link for that project -->
+                    <a href="/user/page/projectPage/?id=<%= project.id %>" class="text-black text-decoration-none ">
+                        <div class="fw-bold fs-4 "><%= project.name %> 
+                          <small class="fw-light fs-6  ">added by <%= project.authorId.name %></small>
+                          <% if(locals.user.id == project.authorId.id) { %>
+                             <!-- Delete Button -->
+                            <button class="deleteBtn btn btn-outline-danger fs-6" data-project-id="<%= project.id %>">
+                              Delete
+                            </button>
+                          <% } %>
+                        </div>
+                        <%= project.description %>
+                    </a>
+                </div>
+                <% if (project.bugs.length) { %>
+                  <span class="badge bg-danger rounded-pill"><%= project.bugs.length %></span>
+                <% } else { %>
+                  <span class="badge bg-success rounded-pill">No Bugs</span>
+                <% } %>
+                
+          </li>
+          <% } %>
+        </ol>
+
+    </div>
+
+  </div> <!-- Close the row container here -->
+
+</div>
+
+
+<script src="/js/submit.js"></script>

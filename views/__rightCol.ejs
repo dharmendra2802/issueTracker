@@ -1,0 +1,21 @@
+
+<p class="display-6 fs-4 fw-semibold mt-2 pb-2">My Projects</p>
+       
+<ol class="list-group list-group-numbered m-0 pe-1 style-4"   style="overflow-y: auto; height:400px">
+    
+    <% for(project of user.projects) { %>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto text-limit">
+          <div class="fw-bold ">
+            <%= project.name %>
+          </div>
+            <%= project.description %>
+        </div>
+        <% if (project.bugs.length) { %>
+            <span class="badge bg-danger rounded-pill"><%= project.bugs.length %></span>
+        <% } else { %>
+            <span class="badge bg-success rounded-pill">No Bugs</span>
+        <% } %>
+    </li>
+    <% } %>
+</ol>

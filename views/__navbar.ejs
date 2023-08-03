@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary mb-4">
+    <div class="container-fluid px-5">
+         <p class="navbar-brand fw-bold fs-3 m-0 p-0 text-success  ">BugLedger</p>
+        
+        <div>
+            
+            <a href="" class="fs-5 fw-normal text-black me-4" data-bs-toggle="modal" data-bs-target="#addProject">
+                Add a project
+            </a>
+            <a href="/user/destroy" class="btn btn-outline-danger ">Signout</a>
+        </div>
+
+    </div>
+</nav>
+
+
+  <!-- Modal -->
+<div class="modal fade" id="addProject" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-3 fw-semibold text-success " id="staticBackdropLabel">Add Project</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <!-- to add the task -->
+            <form action="/user/add/addProject" id="addProjectForm" method="post">
+                <!-- sedning id -->
+                <input type="hidden" name="authorId" value="<%= user.id%>">
+                <div class="mb-3">
+                    <label for="name" class="form-label fw-semibold fs-4 ">Name of the project</label>
+                    <input type="text" class="form-control" id="name" placeholder="name of the project" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="author" class="form-label fw-semibold fs-4 ">Author Name</label>
+                    <input type="text" class="form-control" id="author" placeholder="name of the author" name="author" required value="<%= user.name%>">
+                </div>
+                <div class="mb-3">
+                    <label for="Description" class="form-label  fw-semibold fs-4 ">Description</label>
+                    <textarea class="form-control" id="Description" rows="3" name="description" placeholder="Add a description of the project" required></textarea>
+                </div>
+                <div class="d-flex justify-content-center ">
+                    <button type="submit" class="col-6 btn btn-outline-success ">Add</button>
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- script -->
+<script src="/js/submit.js"></script>

@@ -1,0 +1,28 @@
+<% for(bug of bugs) { %>
+  <div class="accordion-item mb-2">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#<%= bug.id %>" aria-expanded="false" aria-controls="<%= bug.id %>">
+            <p class="fs-3 fw-medium "><%= bug.name %></p>
+        </button>
+      </h2>
+      <div id="<%= bug.id %>" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <p class="display-2 fs-6 fw-semibold ">Added by - <span class="fs-5 "><%= bug.authorId.name %></span></p>
+          <p class="display-2 fs-6 fw-semibold ">Created on - <span class="fs-6 fw-normal "><%= bug.createdAt %></span></p>
+          
+          <% if(locals.user.id == bug.authorId.id) { %>
+            <a href="/user/remove/removebug/<%=bug.id%>" class="me-2"><img src="/imgs/bin.png" class="ms-2 icons" alt=""></a>
+          <% } %>
+            
+          <% if(bug.label) { %>
+            <% for(label of bug.label) { %>
+             <span class="display-2 text-bg-secondary  p-1 fs-6 me-1 "><%= label %></span>
+            <% } %>
+          <% } %>
+          <p class="display-2 fs-3 mt-2 fw-bold text-decoration-underline " >Description</p>
+          <p class="display-2 fs-4 fw-normal" ><%= bug.description %></p>
+
+        </div>
+      </div>
+  </div>
+<% } %>

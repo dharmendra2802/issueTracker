@@ -1,0 +1,43 @@
+<div class="container d-flex justify-content-center align-items-center " style="height: 100vh;">
+
+    <div class="row shadow-lg p-3 mb-5 bg-body-tertiary rounded  " style="height: 60vh;">
+        
+        <div class="col-12 ">
+            <p class="h1 text-center">Issue Tracker</p>
+        </div>
+        
+        <div class="col-6 border-end d-flex flex-column justify-content-center align-items-center">
+            <p> or Signin with </p>
+            <div class="d-grid gap-2 col-8 mx-auto mb-3">
+                <a href="/user/auth/google" class="btn btn-outline-primary" type="button">
+                    <img src="/imgs/google.png" alt="" class="me-1" style="width: 18px;height: 18px;">
+                    Google</a>
+                <a href="/user/auth/facebook" class="btn btn-outline-primary" type="button">
+                    <img src="/imgs/facebook.png" alt="" class="me-1" style="width: 18px;height: 18px;">
+                    Facebook</a>
+            </div>
+
+            <small>Dont have an account ? <a href="/user/signup">SignUp</a></small>
+        </div>
+        <div class="col-6">
+            
+            <p class="h3 mb-3 text-danger ">Signin</p>
+            <form action="/user/createSession" method="post">
+                <div class="form-floating mb-3">
+                   <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email">
+                   <label for="floatingInput">Email address</label>
+                 </div>
+                 <div class="form-floating mb-3">
+                   <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+                   <label for="floatingPassword">Password</label>
+                </div>
+   
+                <div class="d-flex justify-content-between">
+                   <a href="">Forgot password ?</a>
+                   <button type="submit"  class="btn btn-primary col-4">Signin</button>
+   
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
