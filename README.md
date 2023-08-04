@@ -6,8 +6,8 @@ The application is built on express
 
 ## Usage
 1. fork the repo https://github.com/dharmendra2802/issueTracker
-2. To install all the library run : **npm install**
-
+2. To install all the libraries run: **npm install**
+3. Then to start the app run : **npm start**
 ## Features
 **User Authentication**: Users can register and log in to the application using their email and password. Passwords are securely hashed and stored in the database.
 **Project Management**: Authenticated users can create new projects, view their existing projects, and manage project details.
